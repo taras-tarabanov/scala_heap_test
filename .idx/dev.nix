@@ -8,8 +8,8 @@
   
   packages = [
     pkgs.jdk17
-    (pkgs.scala_3.override { jre = pkgs.jdk21; })
-    (pkgs.sbt.override { jre = pkgs.jdk21; })
+    (pkgs.scala_3.override { jre = pkgs.jdk17; })
+    (pkgs.sbt.override { jre = pkgs.jdk17; })
     # pkgs.python311Packages.pip
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
