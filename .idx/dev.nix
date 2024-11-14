@@ -7,9 +7,10 @@
   # Use https://search.nixos.org/packages to find package
   
   packages = [
-    pkgs.jdk21
-    (pkgs.scala_3.override { jre = pkgs.jdk21; })
-    (pkgs.sbt.override { jre = pkgs.jdk21; })
+    pkgs.jdk17                           # Downgraded to JDK 17 for compatibility
+    pkgs.scala_2_12                       # Scala 2.12.17 for SBT and project compatibility
+    pkgs.scala3                           # Scala 3.3.4 for project-specific requirements
+    (pkgs.sbt.override { jre = pkgs.jdk17; })  # Ensure SBT uses JDK 17
     # pkgs.python311Packages.pip
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
