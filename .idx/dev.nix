@@ -5,26 +5,18 @@
   channel = "stable-24.05"; # or "unstable"
 
   # Use https://search.nixos.org/packages to find package
-
+  
   packages = [
-    pkgs.jdk17                           # Downgraded to JDK 17 for compatibility
-    pkgs.scala_2_12                      # Scala 2.12.17 for SBT and project compatibility
-    pkgs.scala_3                         # Scala 3.3.4 for project-specific requirements
-    (pkgs.sbt.override { jre = pkgs.jdk17; })  # Ensure SBT uses JDK 17
+    pkgs.jdk17
+    (pkgs.scala_3.override { jre = pkgs.jdk21; })
+    (pkgs.sbt.override { jre = pkgs.jdk21; })
     # pkgs.python311Packages.pip
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
   ];
 
   # Sets environment variables in the workspace
-  env = {
-    # Example: Set JAVA_HOME if needed
-    JAVA_HOME = "${pkgs.jdk17}/lib/openjdk";
-    SCALA_HOME_2_12 = "${pkgs.scala_2_12}/bin";
-    SCALA_HOME_3 = "${pkgs.scala_3}/bin";
-    PATH = "${pkgs.scala_2_12}/bin:${pkgs.scala_3}/bin:${pkgs.sbt}/bin:${pkgs.jdk17}/bin:${pkgs.nodejs}/bin";
-  };
-
+  env = {};
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
